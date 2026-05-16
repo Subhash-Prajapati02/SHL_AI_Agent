@@ -67,18 +67,18 @@ class QueryRequest(BaseModel):
 from fastapi.responses import FileResponse
 import os
 
-@app.get("/")
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse)
 def home():
 
-    base_dir = os.path.dirname(__file__)
+    with open(
+        "templates/index.html",
+        "r",
+        encoding="utf-8"
+    ) as f:
 
-    file_path = os.path.join(
-        base_dir,
-        "templates",
-        "index.html"
-    )
-
-    return FileResponse(file_path)
+        return f.read()
 
 @app.get("/health")
 
