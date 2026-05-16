@@ -64,13 +64,21 @@ class QueryRequest(BaseModel):
 
     question: str
 
-@app.get("/")
+from fastapi.responses import FileResponse
+import os
 
+@app.get("/")
 def home():
 
-    return FileResponse(
-        "templates/index.html"
+    base_dir = os.path.dirname(__file__)
+
+    file_path = os.path.join(
+        base_dir,
+        "templates",
+        "index.html"
     )
+
+    return FileResponse(file_path)
 
 @app.get("/health")
 
