@@ -64,13 +64,13 @@ class QueryRequest(BaseModel):
 
     question: str
 
-from fastapi import FastAPI
-
-app = FastAPI()
-
 @app.get("/")
+
 def home():
-    return {"message": "Railway Working"}
+
+    return FileResponse(
+        "templates/index.html"
+    )
 
 @app.get("/health")
 
