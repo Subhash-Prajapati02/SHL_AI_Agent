@@ -5,6 +5,7 @@ chromadb
 langchain
 langchain-community
 langchain-core
+langchain-groq
 groq
 python-dotenv
 python-multipart
