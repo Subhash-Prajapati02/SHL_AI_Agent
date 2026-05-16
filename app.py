@@ -64,21 +64,13 @@ class QueryRequest(BaseModel):
 
     question: str
 
-from fastapi.responses import FileResponse
-import os
+from fastapi import FastAPI
 
-from fastapi.responses import HTMLResponse
+app = FastAPI()
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 def home():
-
-    with open(
-        "templates/index.html",
-        "r",
-        encoding="utf-8"
-    ) as f:
-
-        return f.read()
+    return {"message": "Railway Working"}
 
 @app.get("/health")
 
